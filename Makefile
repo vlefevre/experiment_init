@@ -1,7 +1,10 @@
 CC=nvcc
-CC_FLAGS=-arch=sm_80
 dt=float
+iters=1
+wups=1
 SRC=main.cu
+
+CC_FLAGS=-arch=sm_80 -DNITERS=$(iters) -DNWARMUPS=$(wups)
 
 all: initArray initArrayUnroll4 initArrayManualUnroll4 initArrayVec4
 

@@ -132,7 +132,7 @@ int main(int argc, char **argv)
 	if constexpr (XSTR(KERNEL_NAME) == "initArray")
 		std::cout << "#ELTS/THR    " << (double)N/double(nthreads*nblocks) << "\n";
 	else
-		std::cout << "#ELTS/THR    " << (double)N/double(nthreads*nblocks*4) << "\n";
+		std::cout << "#ELTS/THR    " << (double)N/double(nthreads)*nblocks*4 << "\n";
 	dtype *data;
 	cudaMalloc(&data, size);
 
