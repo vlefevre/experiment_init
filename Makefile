@@ -1,5 +1,5 @@
 CC=nvcc
-CC_FLAGS=-O3
+CC_FLAGS=-arch=sm_80
 dt=float
 SRC=main.cu
 
