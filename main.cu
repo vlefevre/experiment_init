@@ -137,7 +137,7 @@ int main(int argc, char **argv)
 	cudaMalloc(&data, size);
 
 	for (int i=0; i<NWARMUPS; i++)
-		initArray<<<nblocks, nthreads>>>(N, data, value);
+		KERNEL_NAME<<<nblocks, nthreads>>>(N, data, value);
 
 	cudaEvent_t start,end;
 
@@ -148,6 +148,7 @@ int main(int argc, char **argv)
 	for (int i=0; i<NITERS; i++)
 	{
 		cudaEventRecord(start);
+		KERNEL_NAME<<<nblocks, nthreads>>>(N, data, value);
 		cudaEventRecord(end);
 		cudaEventSynchronize(end);
 		cudaEventElapsedTime(&current_time, start, end);
